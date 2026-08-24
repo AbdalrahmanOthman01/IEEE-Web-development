@@ -1,0 +1,329 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff7fa;
+    color: #59434d;
+    line-height: 1.8;
+}
+
+
+
+header {
+    background: #ffffff;
+    padding: 15px 8%;
+    box-shadow: 0 3px 15px rgba(180, 120, 145, 0.12);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h2 {
+    color: #c06c91;
+    margin: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #765766;
+    margin-right: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #d879a0;
+}
+
+
+
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+
+
+.hero {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 70px 20px;
+}
+
+.hero-text {
+    max-width: 600px;
+}
+
+.welcome {
+    color: #d879a0;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 42px;
+    color: #6e4b5c;
+    line-height: 1.4;
+}
+
+.hero h2 {
+    color: #c06c91;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+
+
+
+.profile-card {
+    background: white;
+    padding: 35px;
+    width: 300px;
+    text-align: center;
+    border-radius: 30px;
+
+    box-shadow:
+        0 15px 40px rgba(190, 120, 150, 0.18);
+
+    transition: 0.3s;
+}
+
+.profile-card:hover {
+    transform: translateY(-8px);
+}
+
+.profile-circle {
+    width: 150px;
+    height: 150px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fde1eb;
+
+    font-size: 65px;
+}
+
+
+
+
+.button {
+    display: inline-block;
+
+    margin-top: 15px;
+    padding: 10px 25px;
+
+    background: #d879a0;
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 30px;
+
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #bd5f88;
+    transform: translateY(-3px);
+}
+
+
+
+
+.section {
+    padding: 60px 20px;
+}
+
+.section-title {
+    text-align: center;
+    color: #c06c91;
+    margin-bottom: 30px;
+}
+
+
+
+
+.info-card {
+    background: white;
+
+    padding: 25px 35px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 8px 25px rgba(190, 120, 150, 0.12);
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+.info-card p {
+    border-bottom: 1px solid #f5dce5;
+    padding-bottom: 8px;
+}
+
+
+
+.skills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.skills span {
+    background: #fde1eb;
+
+    color: #a84f75;
+
+    padding: 10px 22px;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.skills span:hover {
+    background: #d879a0;
+    color: white;
+    transform: scale(1.05);
+}
+
+
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+
+    width: 280px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    box-shadow: 0 8px 25px rgba(190, 120, 150, 0.12);
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.icon {
+    font-size: 45px;
+}
+
+.card h3 {
+    color: #c06c91;
+}
+
+
+
+
+.goal {
+    background: #fde1eb;
+
+    padding: 45px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    margin: 40px 20px;
+}
+
+.goal h2 {
+    color: #a84f75;
+}
+
+
+/* ================= CONTACT ================= */
+
+.contact {
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.contact h2 {
+    color: #c06c91;
+}
+
+
+
+
+footer {
+    text-align: center;
+
+    background: #f3d0dd;
+
+    color: #654653;
+
+    padding: 20px;
+
+    margin-top: 50px;
+}
+
+
+
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        margin-right: 8px;
+        font-size: 14px;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .profile-card {
+        width: 250px;
+    }
+
+}
+
