@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nada Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="home">
+
+<header>
+    <h1 class="logo">Nada</h1>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Project Details</a>
+        <a href="#skills">Skills</a>
+        <a href="#recommendations">Recommendations</a>
+    </nav>
+</header>
+
+<section id="about" class="section">
+    <div class="about-container">
+        <img src="img/fbe07ed4737926a28c62ce611931ca27.jpg" alt="Profile">
+        <div>
+            <h1>Nada Mostafa</h1>
+            <h3>About Me</h3>
+            <p>
+                I am a passionate Full Stack Developer who enjoys 
+                building responsive, modern, and user-friendly web 
+                applications. I have experience with HTML, CSS, JavaScript, 
+                C#, ASP.NET Core, and SQL Server. I am always eager to learn 
+                new technologies, improve my skills, and build real-world 
+                projects that solve problems.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="section">
+    <h2>Skills</h2>
+    <div class="skills-container">
+        <div class="skill-card">
+            <img src="img/fb1e7f9db2540c3194a9179094a925e2.jpg">
+            <h3>HTML</h3>
+        </div>
+        <div class="skill-card">
+            <img src="img/faae11a6b87547339411b40ac228d4d7.jpg">
+            <h3>CSS</h3>
+        </div>
+        <div class="skill-card">
+            <img src="img/499b1d8f955acd1d3ec30f217eddfa2a.jpg">
+            <h3>JavaScript</h3>
+        </div>
+        <div class="skill-card">
+            <img src="img/92d660adb69ff63b4d133cda9592d848.jpg">
+            <h3>Bootstrap</h3>
+        </div>
+        <div class="skill-card">
+            <img src="img/8240ac872c818d2a39ef20d819fdbf0d.jpg">
+            <h3>React</h3>
+        </div>
+        <div class="skill-card">
+            <img src="img/cdb9dce649cb13b49285b55e454fbbe9.jpg">
+            <h3>C#</h3>
+        </div>
+        <div class="skill-card">
+            <img src="img/3e55dfb0980956b42cac768b740cdad6.jpg">
+            <h3>SQL Server</h3>
+        </div>
+        <div class="skill-card">
+            <img src="img/140afce1edc7073531c415762e57b48f.jpg">
+            <h3>ASP.NET Core</h3>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="section">
+    <h2>Project Details</h2>
+    <div class="project-card">
+        <h3>E-commerce Website</h3>
+        <p>Responsive shopping platform with product filtering and cart system.</p>
+    </div>
+    <div class="project-card">
+        <h3>Task Manager App</h3>
+        <p>JavaScript-based to-do application with local storage support.</p>
+    </div>
+    <div class="project-card">
+        <h3>Personal Blog</h3>
+        <p>Modern blog website designed with clean UI and responsive layout.</p>
+    </div>
+</section>
+
+<section id="recommendations" class="section">
+    <h2>Recommendations</h2>
+    <div id="rec-list">
+        <div class="rec-card">Nada is highly dedicated and hardworking.</div>
+        <div class="rec-card">She delivers high-quality projects on time.</div>
+        <div class="rec-card">Strong problem-solving and communication skills.</div>
+    </div>
+
+    <textarea id="new-rec" placeholder="Write your recommendation here..."></textarea>
+    <button onclick="addRecommendation()">Submit</button>
+</section>
+
+<a href="#home" class="home-btn">↑</a>
+
+<script src="script.js"></script>
+</body>
+</html>
