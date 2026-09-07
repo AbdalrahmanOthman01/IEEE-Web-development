@@ -1,0 +1,110 @@
+/* Smart Applicant - Custom Styles & Micro-animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(71, 85, 105, 0.7);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.9);
+}
+
+/* Drag and Drop Active Highlight */
+.drag-active {
+    border-color: #3b82f6 !important;
+    background-color: rgba(59, 130, 246, 0.1) !important;
+    transform: scale(1.01);
+}
+
+/* Toast Animation */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.toast-enter {
+    animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Print Optimization for Examination & Documentation */
+@media print {
+    body {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+    }
+
+    header,
+    #analyzerForm,
+    #btnPrintReport,
+    #btnScrollToTop,
+    #btnOpenAlgorithm,
+    #btnOpenHistory,
+    .fixed,
+    #toastContainer {
+        display: none !important;
+    }
+
+    #resultsSection {
+        display: block !important;
+        margin-top: 0 !important;
+    }
+
+    .bg-slate-800\/80,
+    .bg-slate-800\/60,
+    .bg-slate-900 {
+        background-color: #f8fafc !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #0f172a !important;
+        box-shadow: none !important;
+    }
+
+    .text-white {
+        color: #0f172a !important;
+    }
+
+    .text-slate-400,
+    .text-slate-500 {
+        color: #475569 !important;
+    }
+
+    .border-slate-700,
+    .border-slate-800 {
+        border-color: #e2e8f0 !important;
+    }
+
+    #scoreValue {
+        color: #0f172a !important;
+    }
+}
