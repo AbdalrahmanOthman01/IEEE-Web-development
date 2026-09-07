@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" >
+    <meta name="description" content="الموقع الرسمى لدار التلوانى لتحفيظ القرآن الكريم">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دار التلوانى لتحفيظ القرآن الكريم ببرهيم</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <a href="{{ url_for('questions') }}" class="floating-ask-btn" title="أسئلة واستفسارات">
+        <span class="msg-icon">💬</span>
+        <span class="btn-text">أسئلة واستفسارات</span>
+    </a>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.jpeg') }}" width="200" alt="شعار دار التلوانى">
+        <h1> دار التلوانى لتحفيظ القرآن الكريم ببرهيم</h1>
+    <hr>
+    <nav>
+            <a href="{{ url_for('home') }}" > الصفحة الرئيسية</a>
+            <a href="{{ url_for('about') }}"> عن الدار</a>
+            <a href="{{ url_for('courses') }}">الحلقات و الدورات</a>
+            <a href="{{ url_for('register') }}">التسجيل</a>
+            <a href="{{ url_for('learn') }}"> فيديوهات تعلم</a>
+            <a href="{{ url_for('library') }}"> المكتبة الإسلامية</a>
+            <a href="{{ url_for('academy') }}"> أكاديمية التجويد الميسر</a>
+        </nav>
+        </header>
+    <main>
+        <section>
+        <h2>فيديوهات التعلم والتطوير</h2>
+        <p>
+            تضم هذه الصفحة مجموعة من الفيديوهات المختارة بعناية لمساعدة الطلاب على تحسين الحفظ، وفهم معاني القرآن الكريم، وزيادة الدافع للاستمرار في رحلتهم مع كتاب الله.
+        </p>
+        </section>
+        <section>
+        <h3>📖 فيديوهات التدبر</h3>
+        <p>
+          تساعد هذه الفيديوهات على فهم معاني آيات القرآن الكريم والتأمل في مقاصدها، مما يزيد من الخشوع ويقوي الصلة بكتاب الله تعالى.
+        </p>
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=vLRTRM9b5pI&list=PLukAHj56HNKZEbY6eLwSnLEe3aLj_6XLI" target="_blank">تدبر سورة البقرة للدكتور فاضل سليمان</a></li>
+            <li><a href="https://www.youtube.com/watch?v=Zbk4TAxYRms&list=PLIJ8GEGgVY0ToUaPnEU-nemN3y8KJUN1D" target="_blank">تفسير سورة النساء للدكتور محمد الخضيرى</a></li>
+            <li><a href="https://www.youtube.com/watch?v=1lpcJ-YE0EU&list=PLHw4N1oY3SvBTDMJdSHd7j0Druku94zfm" target="_blank">مجالس القرآن للمهندس أحمد عامر</a></li>
+            <li><a href="https://www.youtube.com/watch?v=mDP084pOle8&list=PLnpYU8_AiEPdZtOcZemEHETeOjWakJpKE&pp=0gcJCewCOCosWNin" target="_blank">تفسير جزء عم للدكتور أحمد عبد المنعم</a></li>
+        </ul>
+        </section>
+        <hr>
+        <section>
+            <h3>🔄 فيديوهات التثبيت والمراجعة</h3>
+            <p>
+                تضم هذه المجموعة فيديوهات تشرح أفضل الطرق العملية لمراجعة القرآن الكريم، وتثبيت الحفظ، والتغلب على النسيان بإذن الله.
+            </p>
+            <ul>
+                <li><a href="https://www.youtube.com/@%D8%A3%D9%85%D9%84%D8%AB%D8%A7%D8%A8%D8%AA" target="_blank">قناة أمل ثابت(ربط و تثبيت)</a></li>
+                <li><a href="https://www.youtube.com/@AmiraYosry" target="_blank">قناة أميرة يسرى(ربط و متشابهات)</a></li>
+                <li><a href="https://www.youtube.com/@%D8%A7%D9%84%D9%85%D8%AA%D8%B4%D8%A7%D8%A8%D9%87%D8%A7%D8%AA-%D9%85%D9%87%D9%86%D8%AF%D8%B3-%D9%85%D8%AD%D9%85%D9%88%D8%AF-%D9%81%D8%B1%D9%8A%D8%AF" target="_blank">قناة المهندس محمود فريد لمتشابهات القرآن</a></li>
+                <li><a href="https://www.youtube.com/@FarisAntar" target="_blank">قناة فارس عنتر لتثبيت القرآن</a></li>
+                <li><a href="https://www.youtube.com/watch?v=qVxkjLJ-v6M&list=PLK6zy6Q2elhITh9K59WD9dc2XrLt_raZm" target="_blank">دورة تثبيت القرآن بضبط المتشابه</a></li>
+                <li><a href="https://www.youtube.com/@%D8%AF%D9%88%D8%B1%D8%A9%D8%A7%D9%84%D8%AA%D8%AD%D8%AF%D9%8A%D8%A7%D9%84%D9%83%D8%A8%D8%B1%D9%89%D8%A8%D8%A5%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%D8%AD%D8%A7%D9%81%D8%B8%D9%85">قناة عفاف مرعى (تحفيظ و معانى و ربط)</a></li>
+            </ul>
+        </section>
+        <hr>
+        <section>
+            <h3>🌿 فيديوهات التجويد</h3>
+            <p>
+                تحتوي هذه القائمة على دروس مبسطة في أحكام التجويد ومخارج الحروف، لمساعدة الطلاب على تلاوة القرآن الكريم تلاوة صحيحة كما أُنزل.
+            </p>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=O0DxpbS0Lfs&list=PLRpvHZq8NeLacnKt2FKtlTSRLWoFOpBGA" target="_blank">الدورة التجويدية التأصيلية للشيخ أيمن سويد</a></li>
+                <li><a href="https://www.youtube.com/watch?v=3Y9fwYvN6Rs&list=PLcgZz-bFmPJHgVT6U5UQ5vv99_HbQWktq" target="_blank">دورة التجويد المتكاملة للشيخ فارس عنتر</a></li>
+            </ul>
+            <p>
+                يمكنكم أيضًا زيارة صفحة <a href="{{ url_for('academy') }}">أكاديمية التجويد الميسر</a> بالموقع للاطلاع على المزيد من الدروس والمواد التعليمية الخاصة بعلم التجويد.
+            </p>
+        </section>
+        <hr>
+        <section>
+            <h3>🌟 فيديوهات التحفيز</h3>
+            <p>
+                تضم هذه المجموعة مقاطع وسلاسل إيمانية تحفز على حفظ القرآن الكريم، وتبين فضله، وتعرض قصصًا وتجارب ملهمة لحفظة كتاب الله.
+            </p>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=K9Yo43w62FA&list=PLwpWNTLjV2091zs4FkItmzL1cGZst3WdD&pp=0gcJCewCOCosWNin" target="_blank">سلسلة بالقرآن اهتديت للشيخ فهد الكندرى الموسم الأول</a></li>
+                <li><a href="https://www.youtube.com/watch?v=EvcpjwVTfYQ&list=PLwpWNTLjV20_XZx7tY_Gxs4oHUa9Rz5s0" target="_blank">سلسلة بالقرآن اهتديت للشيخ فهد الكندرى الموسم الثانى</a></li>
+                <li><a href="https://www.youtube.com/watch?v=Y-7bmSQ90uA&list=PLwpWNTLjV20_wy9BzIp_pIc3WgEQd4Gah" target="_blank">سلسلة بالقرآن اهتديت للشيخ فهد الكندرى الموسم الثالث</a></li>
+                <li><a href="https://www.youtube.com/watch?v=TxUk46IBvB8&pp=ygUt2KjZiNiv2YPYp9iz2Kog2LXYsdin2K3ZiSDYrdmB2Lgg2KfZhNmC2LHYp9mG" target="_blank">حفظ القرآن و طلب العلم بودكاست صراحة</a></li>
+                <li><a href="https://www.youtube.com/@mystorywithquran" target="_blank">بودكاست حكايتى مع القرآن للنساء</a></li>
+                <li><a href="https://www.youtube.com/watch?v=qNu8UYeeQyE&pp=ygUt2KjZiNiv2YPYp9iz2Kog2LXYsdin2K3ZiSDYrdmB2Lgg2KfZhNmC2LHYp9mG" target="_blank">رحلتى مع القرآن للشيخ أحمد إسماعيل</a></li>
+                <li><a href="https://www.youtube.com/watch?v=q8EYrvWn4n0&pp=ygUt2KjZiNiv2YPYp9iz2Kog2LXYsdin2K3ZiSDYrdmB2Lgg2KfZhNmC2LHYp9mG" target="_blank">قصتى مع حفظ القرآن بودكاست فاهم</a></li>
+                <li><a href="https://www.youtube.com/watch?v=hK-9Be0prrA&t=4635s&pp=ygUg2YPZitmBINiq2KrZhNiw2LAg2KjYp9mE2YLYsdin2YbSBwkJmQsBhyohjO8%3D" target="_blank">كيف تتلذذ بالقرآن للدكتور أحمد العربى بودكاست فاهم</a></li>
+                <li><a href="https://www.youtube.com/watch?v=FOIIa8Na0Ns&t=289s&pp=ygUg2YPZitmBINiq2KrZhNiw2LAg2KjYp9mE2YLYsdin2YY%3D" target="_blank">كيف نحيا بالقرآن فى زمن الفتن</a></li>
+                <li><a href="https://www.youtube.com/watch?v=Pfj4niPP0DY&pp=ygUn2YHZh9mF2Ykg2YTZhNmC2LHYp9mGINi62YrYsSDYrdmK2KfYqtmJ" target="_blank">فهمى للقرآن غير حياتى بودكاست بدون ورق</a></li>
+            </ul>
+        </section>
+        <hr>
+        <section>
+        <p>
+        نسأل الله أن ينفع بهذه المواد وأن يجعلها عونًا لكل من أراد حفظ كتاب الله تعالى.
+        </p>
+        </section>
+    </main>
+    <hr>
+    <footer>
+    <p>
+        رقم هاتف الشيخ : 01000276014
+    </p>
+    <p>
+   <a href="https://www.facebook.com/telwanibarhim" target="_blank">صفحة الفيسبوك</a>
+   </p>
+   <p>
+   <a href=https://www.youtube.com/@daraltalwanibibarhim" target="_blank">قناة اليوتيوب</a>
+   </p>
+   <p>
+   العنوان : برهيم-منوف-محافظة المنوفية
+   </p>
+   <p>
+  &copy; جميع حقوق النشر محفوظة لدار التلوانى لتحفيظ القرآن الكريم
+   </p>
+</footer>
+</body>
+</html>

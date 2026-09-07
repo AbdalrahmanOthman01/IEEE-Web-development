@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="الموقع الرسمى لدار التلوانى لتحفيظ القرآن الكريم">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دار التلوانى لتحفيظ القرآن الكريم ببرهيم</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <a href="{{ url_for('questions') }}" class="floating-ask-btn" title="أسئلة واستفسارات">
+        <span class="msg-icon">💬</span>
+        <span class="btn-text">أسئلة واستفسارات</span>
+    </a>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.jpeg') }}" width="200" alt="شعار دار التلوانى">
+        <h1> دار التلوانى لتحفيظ القرآن الكريم ببرهيم</h1>
+        <hr>
+        <nav>
+            <a href="{{ url_for('home') }}"> الصفحة الرئيسية</a>
+            <a href="{{ url_for('about') }}"> عن الدار</a>
+            <a href="{{ url_for('courses') }}">الحلقات و الدورات</a>
+            <a href="{{ url_for('register') }}">التسجيل</a>
+            <a href="{{ url_for('learn') }}"> فيديوهات تعلم</a>
+            <a href="{{ url_for('library') }}"> المكتبة الإسلامية</a>
+            <a href="{{ url_for('academy') }}"> أكاديمية التجويد الميسر</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+        <h2>التسجيل في دار التلوانى لتحفيظ القرآن الكريم</h2>
+        <p>
+            نسعد بانضمامكم إلى دار التلوانى، يرجى تعبئة البيانات التالية وسيتم التواصل معكم فى أقرب وقت.
+        </p>
+        </section>
+        <form id="registerForm" action="{{ url_for('register') }}" method="POST">
+            <label>الاسم بالكامل</label>
+            <input type="text" name="name" placeholder="ادخل اسمك ثلاثى" required>
+            <br>
+            <label>العمر</label>
+            <input type="number" name="age" required>
+            <br>
+            <p>النوع:</p>
+            <input type="radio" name="gender" value="male">
+            <label>ذكر</label>
+            <input type="radio" name="gender" value="female">
+            <label>أنثى</label>
+            <br>
+            <label>رقم الهاتف</label>
+            <input type="tel" name="phone" placeholder="رجاء ادخل رقم الواتساب" required>
+            <br>
+            <label>البريد الالكترونى</label>
+            <input type="email" name="email">
+            <br>
+            <p>نوع الدراسة:</p>
+            <input type="checkbox" name="course" value="quran">
+            <label>حلقة تحفيظ</label>
+            <input type="checkbox" name="course" value="tajweed">
+            <label>دورة تجويد</label>
+            <input type="checkbox" name="course" value="review">
+            <label>حلقة مراجعة</label>
+            <input type="checkbox" name="course" value="online">
+            <label>دورة أونلاين</label>
+            <br>
+            <p>طريقة الدراسة :</p>
+            <input type="radio" name="way" value="online">
+            <label>أونلاين</label>
+            <input type="radio" name="way" value="offline">
+            <label>حضورى</label>
+            <br>
+            <label for="category">نوع الحلقة</label>
+            <select id="category" name="category">
+                <option value="">اختر نوع الحلقة</option>
+                <option value="kids">حلقات الصغار</option>
+                <option value="adults">حلقات الكبار</option>
+                <option value="azhar">حلقات الأزهر</option>
+            </select>
+            <br>
+            <label for="course">الحلقة</label>
+            <select id="course" name="halaqa" required>
+                <option value="" selected disabled>اختر الحلقة أولاً</option>
+            </select>
+            <p>المستوى الحالى</p>
+              <select name="level">
+                <option value="" selected disabled>اختر المستوى</option>
+                <option value="مبتدئ">مبتدئ</option>
+                <option value="خاتم القرآن">خاتم القرآن</option>
+                <option value="حافظ من 1 الى 10 أجزاء">حافظ من 1 الى 10 أجزاء</option>
+                <option value="حافظ من 11 الى 20 جزء">حافظ من 11 الى 20 جزء</option>
+                <option value="حافظ من 21 الى 29 جزء">حافظ من 21 الى 29 جزء</option>
+            </select>
+            <br>
+            <p>أيام الحضور المناسبة</p>
+            <p><b>اختر ثلاثة أيام مناسبة للحضور:</b></p>
+            <input type="checkbox" name="day" value="السبت">
+            <label>السبت</label>
+            <input type="checkbox" name="day" value="الأحد">
+            <label>الأحد</label>
+            <input type="checkbox" name="day" value="الاثنين">
+            <label>الاثنين</label>
+            <input type="checkbox" name="day" value="الثلاثاء">
+            <label>الثلاثاء</label>
+            <input type="checkbox" name="day" value="الاربعاء">
+            <label>الاربعاء</label>
+            <input type="checkbox" name="day" value="الخميس">
+            <label>الخميس</label>
+            <br>
+            <label>الملاحظات</label>
+            <textarea name="notes" placeholder="لكتابة أى ملاحظة أو استفسار"></textarea>
+            <br>
+            <input type="submit" value="إرسال البيانات">
+            <input type="reset" value="إعادة تعيين">
+        </form>
+        <hr>
+        <section>
+        <h3>تعليمات التسجيل</h3>
+        <ul>
+            <li>الالتزام بمواعيد الحلقة</li>
+            <li>احترام المعلمين</li>
+            <li>المواظبةعلى الحضور</li>
+            <li>مراجعة الحفظ باستمرار</li>
+            <li>سيتم التواصل بعد مراجعة البيانات</li>
+        </ul>
+        </section>
+    </main>
+    <hr>
+    <footer>
+        <p>رقم هاتف الشيخ : 01000276014</p>
+        <p><a href="https://www.facebook.com/telwanibarhim" target="_blank">صفحة الفيسبوك</a></p>
+        <p>
+   <a href=https://www.youtube.com/@daraltalwanibibarhim" target="_blank">قناة اليوتيوب</a>
+   </p>
+        <p>العنوان : برهيم-منوف-محافظة المنوفية</p>
+        <p>&copy; جميع حقوق النشر محفوظة لدار التلوانى لتحفيظ القرآن الكريم</p>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+
+</html>

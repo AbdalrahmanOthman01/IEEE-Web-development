@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>لوحة التحكم - إدارة الأسئلة</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="top-nav-container">
+        <a href="{{ url_for('home') }}" class="back-btn">
+            العودة للصفحة الرئيسية ⬅️
+        </a>
+    </div>
+
+    <main class="qa-container">
+
+        <h2>🛠️ لوحة تحكم الأدمن</h2>
+
+        <p>
+            من هنا يمكنك إدارة الأسئلة واستقبال استمارات التسجيل.
+        </p>
+
+        <a href="{{ url_for('registrations') }}"
+           class="admin-btn"
+           style="display:inline-block; text-decoration:none; margin:15px 0;">
+            📋 عرض استمارات التسجيل
+        </a>
+
+        <hr style="margin:20px 0;">
+
+        <h3>❓ الأسئلة الجديدة</h3>
+
+        <div id="pendingQuestionsContainer">
+            جاري تحميل الأسئلة...
+        </div>
+
+    </main>
+
+    <script>
+
+        const ADMIN_PASSWORD = "123";
+
+        function checkAuthAndLoad() {
+
+            const userPass = prompt(
+                "برجاء إدخال كلمة سر الأدمن:"
+            );
+
+            if (userPass !== ADMIN_PASSWORD) {
+
+                alert(
+                    "كلمة السر خاطئة! سيتم تحويلك للصفحة الرئيسية."
+                );
+
+                window.location.href =
+                    "{{ url_for('home') }}";
+
+                return;
+            }
+
+            loadPendingQuestions();
+        }
+
+
+        function loadPendingQuestions() {
+
+            const container =
+                document.getElementById(
+                    "pendingQuestionsContainer"
+                );
+
+            container.innerHTML =
+                "جاري تحميل الأسئلة المعلقة...";
+
+
+            fetch("/api/admin/pending-questions")
+
+                .then(function(response) {
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "HTTP Error " +
+                            response.status
+                        );
+
+                    }
+
+                    return response.json();
+
+                })
+
+                .then(function(questions) {
+
+                    container.innerHTML = "";
+
+
+                    if (
+                        !questions ||
+                        questions.length === 0
+                    ) {
+
+                        container.innerHTML = `
+
+                            <p style="
+                                text-align:center;
+                                color:#2e7d32;
+                                font-weight:bold;
+                            ">
+
+                                🎉 لا توجد أسئلة معلقة حاليًا!
+
+                            </p>
+
+                        `;
+
+                        return;
+                    }
+
+
+                    questions.forEach(function(q) {
+
+                        const card =
+                            document.createElement("div");
+
+                        card.className =
+                            "admin-card";
+
+
+                        card.innerHTML = `
+
+                            <div class="admin-q-title">
+                                ❓ سؤال رقم (${q.id})
+                            </div>
+
+                            <p style="
+                                font-size:18px;
+                                margin:15px 0;
+                            ">
+                                ${q.question}
+                            </p>
+
+                            <div class="admin-reply-box">
+
+                                <textarea
+                                    id="answerInput_${q.id}"
+                                    rows="4"
+                                    placeholder="اكتبي إجابة السؤال هنا..."
+                                ></textarea>
+
+                                <button
+                                    class="admin-btn"
+                                    onclick="submitAnswer(${q.id})"
+                                >
+                                    🚀 حفظ ونشر الإجابة
+                                </button>
+
+                            </div>
+
+                        `;
+
+                        container.appendChild(card);
+
+                    });
+
+                })
+
+                .catch(function(error) {
+
+                    console.error(error);
+
+                    container.innerHTML = `
+
+                        <p style="
+                            color:red;
+                            text-align:center;
+                        ">
+
+                            ❌ حدث خطأ أثناء جلب الأسئلة.
+
+                            <br>
+
+                            تأكدي أن Flask يعمل.
+
+                        </p>
+
+                    `;
+
+                });
+
+        }
+
+
+        function submitAnswer(questionId) {
+
+            const input =
+                document.getElementById(
+                    "answerInput_" + questionId
+                );
+
+            const answerText =
+                input.value.trim();
+
+
+            if (!answerText) {
+
+                alert(
+                    "يرجى كتابة الإجابة أولًا."
+                );
+
+                return;
+            }
+
+
+            fetch(
+                "/api/admin/answer-question",
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        id: questionId,
+
+                        answer: answerText
+
+                    })
+
+                }
+            )
+
+            .then(function(response) {
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "HTTP Error " +
+                        response.status
+                    );
+
+                }
+
+                return response.json();
+
+            })
+
+            .then(function(data) {
+
+                alert(
+                    data.message ||
+                    "تم حفظ الإجابة بنجاح!"
+                );
+
+                loadPendingQuestions();
+
+            })
+
+            .catch(function(error) {
+
+                console.error(error);
+
+                alert(
+                    "❌ حدث خطأ أثناء حفظ الإجابة."
+                );
+
+            });
+
+        }
+
+
+        checkAuthAndLoad();
+
+    </script>
+
+</body>
+
+</html>
+

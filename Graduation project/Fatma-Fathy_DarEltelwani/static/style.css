@@ -1,0 +1,904 @@
+/* =====================================
+   دار التلواني لتحفيظ القرآن الكريم
+   Luxury Islamic Website Design V2
+===================================== */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+
+
+:root{
+
+    --navy:#061936;
+    --navy2:#102d52;
+
+    --gold:#d4af37;
+    --gold2:#f6dc8b;
+
+    --cream:#f7f0e3;
+
+    --white:#ffffff;
+
+    --text:#222;
+
+}
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    font-family:'Cairo',sans-serif;
+    direction:rtl;
+
+    background:
+    linear-gradient(
+    rgba(247,240,227,.9),
+    rgba(247,240,227,.9)
+    )
+    ;
+
+    background-size:cover;
+
+    color:var(--text);
+
+}
+
+
+/* =====================
+       Header
+===================== */
+
+
+header{
+
+    background:
+    linear-gradient(
+    135deg,
+    var(--navy),
+    #000814
+    );
+
+    color:white;
+
+    text-align:center;
+
+    padding:50px 20px;
+
+    border-bottom:5px solid var(--gold);
+
+}
+
+
+header h1{
+
+    font-size:45px;
+
+    color:var(--gold2);
+
+    font-weight:900;
+
+    text-shadow:
+    0 0 15px rgba(212,175,55,.5);
+
+}
+
+
+header p{
+
+    font-size:20px;
+
+    margin-top:15px;
+
+}
+
+
+
+/* =====================
+        Navbar
+===================== */
+
+
+nav{
+
+    background:rgba(6,25,54,.95);
+
+    padding:18px;
+
+    text-align:center;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+}
+
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    margin:0 18px;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+
+nav a:hover{
+
+    color:var(--gold);
+
+}
+
+
+
+/* =====================
+       Hero
+===================== */
+
+
+.hero{
+
+    min-height:500px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    background:
+    linear-gradient(
+    rgba(6,25,54,.7),
+    rgba(6,25,54,.7)
+    ),
+    url("hero.jpg");
+
+    background-size:cover;
+
+    color:white;
+
+}
+
+
+
+.hero h2{
+
+    font-size:45px;
+
+    color:var(--gold2);
+
+}
+
+
+.hero p{
+
+    font-size:22px;
+
+}
+
+
+
+/* =====================
+       Sections
+===================== */
+
+
+section{
+
+    width:88%;
+
+    margin:50px auto;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:25px;
+
+    box-shadow:
+
+    0 15px 40px rgba(0,0,0,.12);
+
+}
+
+
+
+section h2{
+
+    text-align:center;
+
+    color:var(--navy);
+
+    font-size:32px;
+
+    margin-bottom:30px;
+
+}
+
+
+section h2:after{
+
+    content:"";
+
+    display:block;
+
+    width:100px;
+
+    height:4px;
+
+    background:var(--gold);
+
+    margin:12px auto;
+
+}
+
+
+
+/* =====================
+       Cards
+===================== */
+
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+}
+
+
+
+.card{
+
+    background:
+    linear-gradient(
+    145deg,
+    #fff,
+    #f5e8ca
+    );
+
+
+    padding:30px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    border:1px solid #eee;
+
+    transition:.4s;
+
+}
+
+
+.card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:
+    0 20px 35px rgba(0,0,0,.2);
+
+}
+
+
+.card h3{
+
+    color:var(--navy);
+
+}
+
+
+
+/* =====================
+       Gallery
+===================== */
+
+
+.gallery{
+
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+
+
+.gallery img{
+
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    border:4px solid var(--gold);
+
+    transition:.4s;
+
+}
+
+
+
+.gallery img:hover{
+
+
+    transform:scale(1.07);
+
+}
+
+
+
+
+
+/* =====================
+       Register Form
+===================== */
+
+
+form{
+
+
+    width:80%;
+
+    margin:auto;
+
+}
+
+
+
+input,
+textarea,
+select{
+
+
+    width:100%;
+
+    padding:15px;
+
+    margin:12px 0;
+
+    border-radius:15px;
+
+    border:2px solid #ddd;
+
+    font-family:inherit;
+
+    font-size:16px;
+
+
+}
+
+
+input:focus,
+textarea:focus,
+select:focus{
+
+
+    border-color:var(--gold);
+
+    outline:none;
+
+}
+
+
+
+/* radio + checkbox */
+
+
+.gender,
+.days{
+
+
+    display:flex;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+    margin:15px 0;
+
+}
+
+
+
+.gender label,
+.days label{
+
+
+    background:#f8efd9;
+
+    padding:12px 25px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    border:2px solid transparent;
+
+    transition:.3s;
+
+
+}
+
+
+
+.gender label:hover,
+.days label:hover{
+
+
+    border-color:var(--gold);
+
+}
+
+
+
+input[type="radio"],
+input[type="checkbox"]{
+
+
+    width:auto;
+
+    margin-left:8px;
+
+}
+
+
+
+/* =====================
+        Buttons
+===================== */
+
+
+button,
+.btn{
+
+
+    background:var(--gold);
+
+    color:var(--navy);
+
+    padding:15px 40px;
+
+    border:none;
+
+    border-radius:30px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+
+}
+
+
+button:hover,
+.btn:hover{
+
+
+    background:var(--navy);
+
+    color:white;
+
+}
+
+
+
+/* =====================
+        Table
+===================== */
+
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+th{
+
+
+    background:var(--navy);
+
+    color:var(--gold2);
+
+}
+
+
+
+td,th{
+
+
+    padding:15px;
+
+    border:1px solid #ddd;
+
+    text-align:center;
+
+}
+
+
+tr:hover{
+
+
+    background:#fff4d6;
+
+}
+
+
+
+/* =====================
+        Footer
+===================== */
+
+
+footer{
+
+
+    background:var(--navy);
+
+    color:white;
+
+    text-align:center;
+
+    padding:30px;
+
+    border-top:5px solid var(--gold);
+
+}
+
+
+
+footer span{
+
+    color:var(--gold2);
+
+}
+
+
+
+/* =====================
+      Animation
+===================== */
+
+
+section,
+.card{
+
+
+    animation:show .8s ease;
+
+
+}
+
+
+
+@keyframes show{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+/* =====================
+       Mobile
+===================== */
+
+
+@media(max-width:700px){
+
+
+header h1{
+
+font-size:30px;
+
+}
+
+
+.hero h2{
+
+font-size:30px;
+
+}
+
+
+section{
+
+width:95%;
+
+padding:20px;
+
+}
+
+
+nav a{
+
+display:block;
+
+margin:10px;
+
+}
+
+
+form{
+
+width:100%;
+
+}
+
+
+}
+ 
+.floating-ask-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    background-color: #D4AF37;
+    color: black;
+    padding: 10px 16px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.floating-ask-btn:hover {
+    background-color: #2e7d32;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* شكل الأيقونة */
+.msg-icon {
+    font-size: 18px;
+}
+
+/* التجاوب مع شاشات الهواتف المحمولة */
+@media (max-width: 600px) {
+    .btn-text {
+        display: none;
+        /* إخفاء النص في الموبايل والاحتفاظ بالأيقونة فقط */
+    }
+
+    .floating-ask-btn {
+        padding: 12px;
+        border-radius: 50%;
+    }
+}
+    
+.qa-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.qa-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.qa-form button {
+    background-color: #D4AF37;
+    color:  black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+.qa-form button:hover {
+    background-color: #2e7d32;
+}
+
+/* كارت السؤال */
+.qa-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* رأس السؤال مع الدائرة */
+.question-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #222;
+}
+
+/* الدوائر الملونة */
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+/* الدائرة الخضراء (تمت الإجابة) */
+.dot-green {
+    background-color: #2e7d32;
+    box-shadow: 0 0 6px rgba(46, 125, 50, 0.6);
+}
+
+/* الدائرة الصفراء (لم تتم الإجابة) */
+.dot-yellow {
+    background-color: rgb(255, 217, 0);
+    box-shadow: 0 0 6px rgba(251, 192, 45, 0.6);
+}
+
+/* صندوق الإجابة */
+.answer-box {
+    margin-top: 10px;
+    background-color: #f1f8e9;
+    color: #1b5e20;
+    padding: 10px;
+    border-radius: 6px;
+    border-right: 4px solid #2e7d32;
+}
+
+/* صندوق الانتظار */
+.pending-box {
+    margin-top: 10px;
+    color: #888;
+    font-size: 13px;
+    font-style: italic;
+    padding-right: 22px;
+}
+.top-nav-container {
+    max-width: 800px;
+    margin: 20px auto 0 auto;
+    padding: 0 20px;
+    text-align: left;
+    /* يجعل العناصر بداخلها تتجه لليسار/الشمال */
+}
+
+/* تنسيق زر العودة للرئيسية */
+.back-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #d4b537;
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    border: 1px solid #c8e6c9;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #2e7d32;
+    color: #ffffff;
+}
+
+
+   .answer-box {
+       margin-top: 8px;
+       color: #333;
+       background: #e8f5e9;
+       padding: 10px;
+       border-radius: 5px;
+   }
+
+   .pending-box {
+       margin-top: 8px;
+       color: #888;
+       font-style: italic;
+   }
+   /* =====================================
+   تنسيقات لوحة تحكم الأدمن (Admin Panel)
+===================================== */
+
+   .admin-card {
+       background: #ffffff;
+       border: 2px solid #d4af37;
+       border-radius: 12px;
+       padding: 20px;
+       margin-bottom: 20px;
+       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+   }
+
+   .admin-q-title {
+       font-size: 1.1rem;
+       font-weight: bold;
+       color: #061936;
+       margin-bottom: 10px;
+   }
+
+   .admin-reply-box {
+       margin-top: 10px;
+   }
+
+   .admin-reply-box textarea {
+       width: 100%;
+       padding: 10px;
+       border: 1px solid #ccc;
+       border-radius: 8px;
+       font-family: inherit;
+       resize: vertical;
+   }
+
+   .admin-btn {
+       background-color: #2e7d32;
+       color: white;
+       border: none;
+       padding: 8px 20px;
+       border-radius: 20px;
+       cursor: pointer;
+       margin-top: 8px;
+       font-weight: bold;
+       transition: background-color 0.3s ease;
+   }
+
+   .admin-btn:hover {
+       background-color: #1b5e20;
+   }

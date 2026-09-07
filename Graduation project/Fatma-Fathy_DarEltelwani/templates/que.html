@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>أسئلة واستفسارات - دار التلواني</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="top-nav-container">
+        <a href="{{ url_for('home') }}" class="back-btn">
+            العودة للصفحة الرئيسية
+        </a>
+    </div>
+
+    <main class="qa-container">
+        <h2> أسئلة واستفسارات الزوار</h2>
+        <p>يمكنك طرح سؤالك بخصوص الحلقات أو المواعيد أو أي استفسار يخص الدار بصورة عامة (جميع الأسئلة تظهر دون اسم)</p>
+
+        <!-- نموذج إرسال سؤال -->
+        <form id="questionForm" class="qa-form">
+            <textarea id="questionInput" rows="3" placeholder="اكتب سؤالك هنا..." required></textarea>
+            <br>
+            <button type="submit">إرسال السؤال</button>
+        </form>
+
+        <hr style="margin: 25px 0;">
+
+        <h3>الأسئلة الشائعة والمجابة</h3>
+        <div id="questionsContainer">جاري تحميل الأسئلة...</div>
+    </main>
+
+    <script>
+        // 1️⃣ معالجة إرسال السؤال الجديد
+        document.getElementById('questionForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // 🛑 منع إعادة تحميل الصفحة الافتراضي
+
+            var questionInput = document.getElementById('questionInput');
+            var questionText = questionInput.value.trim();
+
+            if (!questionText) {
+                alert("برجاء كتابة النص قبل الإرسال!");
+                return;
+            }
+
+            fetch('/api/questions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ question: questionText })
+            })
+                .then(function (res) {
+                    if (!res.ok) {
+                        throw new Error("حدث خطأ في السيرفر: " + res.status);
+                    }
+                    return res.json();
+                })
+                .then(function (data) {
+                    alert(data.message || "تم إرسال سؤالك بنجاح وسيتم الرد عليه قريباً!");
+                    questionInput.value = ''; // تفريغ الخانة بعد الإرسال
+                    loadQuestions(); // إعادة تحميل قائمة الأسئلة لعرض السؤال الجديد فوراً
+                })
+                .catch(function (err) {
+                    console.error("Error:", err);
+                    alert("حدث خطأ أثناء إرسال السؤال، تأكدي من الاتصال بالسيرفر.");
+                });
+        });
+
+        // 2️⃣ دالة جلب الأسئلة
+        function loadQuestions() {
+            fetch('/api/questions')
+                .then(function (res) { return res.json(); })
+                .then(function (data) {
+                    var container = document.getElementById('questionsContainer');
+                    container.innerHTML = '';
+
+                    if (!data || data.length === 0) {
+                        container.innerHTML = '<p style="text-align:center;">لا توجد أسئلة مسجلة حالياً.</p>';
+                        return;
+                    }
+
+                    data.forEach(function (q) {
+                        var card = document.createElement('div');
+                        card.className = 'qa-card';
+
+                        if (q.answer) {
+                            // إذا كان السؤال مُجاباً عليه (الدائرة الخضراء)
+                            card.innerHTML =
+                                '<div class="question-header">' +
+                                '<span class="status-dot dot-green"></span>' +
+                                '<span>س: ' + q.question + '</span>' +
+                                '</div>' +
+                                '<div class="answer-box">' +
+                                '<strong>💡 إجابة الدار:</strong> ' + q.answer +
+                                '</div>';
+                        } else {
+        // إذا كان السؤال في انتظار الإجابة (الدائرة الصفراء)
+        card.innerHTML ='<div class="question-header">' +
+                                '<span class="status-dot dot-yellow"></span>' +
+                                '<span>س: ' + q.question + '</span>' +
+                                '</div>' +
+                                '<div class="pending-box">' +
+                                '⏳ في انتظار إجابة إدارة الدار...' +
+                                '</div>';
+                        }
+
+                        container.appendChild(card);
+                    });
+                })
+                    .catch(function (err) {
+                        console.error("Error:", err);
+                        document.getElementById('questionsContainer').innerHTML = '<p style="color:red; text-align:center;">حدث خطأ أثناء تحميل الأسئلة.</p>';
+                    });
+            }
+
+            // تشغيل الدالة فور تحميل الصفحة
+            loadQuestions();
+        </script>
+    </body>
+    
+    </html>

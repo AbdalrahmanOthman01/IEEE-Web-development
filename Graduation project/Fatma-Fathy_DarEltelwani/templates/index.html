@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" >
+    <meta name="description" content="الموقع الرسمى لدار التلوانى لتحفيظ القرآن الكريم">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دار التلوانى لتحفيظ القرآن الكريم ببرهيم</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <a href="{{ url_for('questions') }}" class="floating-ask-btn" title="أسئلة واستفسارات">
+        <span class="msg-icon">💬</span>
+        <span class="btn-text">أسئلة واستفسارات</span>
+    </a>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.jpeg') }}" width="200" alt="شعار دار التلوانى">
+        <h1> دار التلوانى لتحفيظ القرآن الكريم ببرهيم</h1>
+    <hr>
+    <nav>
+            <a href="{{ url_for('home') }}" > الصفحة الرئيسية</a>
+            <a href="{{ url_for('about') }}"> عن الدار</a>
+            <a href="{{ url_for('courses') }}">الحلقات و الدورات</a>
+            <a href="{{ url_for('register') }}">التسجيل</a>
+            <a href="{{ url_for('learn') }}"> فيديوهات تعلم</a>
+            <a href="{{ url_for('library') }}"> المكتبة الإسلامية</a>
+            <a href="{{ url_for('academy') }}"> أكاديمية التجويد الميسر</a>
+        </nav>
+         </header>
+    <main>
+        <section>
+        <h2>مرحبًا بكم</h2>
+        <p>
+            يسعدنا استقبالكم في الموقع الرسمي لدار التلواني لتحفيظ القرآن الكريم ببرهيم، حيث نسعى إلى تعليم كتاب الله، وإتقان تلاوته، وغرس القيم الإسلامية في نفوس جميع الأعمار.
+        </p>
+        </section>
+        <hr>
+        <section>
+        <h3> رسالة إلى حافظ القرآن</h3>
+        <p>
+            تعزم على الحفظ ..<br>
+فيأتيك الشيطان ويقعدك ..<br>
+تجاهد وتنهض ..<br>
+ثم تأمرك نفسك بأن تؤجل أو تعمل عملاً آخر ...<br>
+والله لو خالفت نفسك واستعنت بالله لكفاك ولشرح صدرك ويسر لك الحفظ<br>
+واعلم أن ماتجده من كسل ودَعَهٍ حين العزم على الحفظ؛ سراب ووهْم<br>
+ابدأ وانطلق وسترى الإعانة من الرب الكريم.
+        </p>
+        </section>
+        <hr>
+        <section>
+        <h2> نبذة عن الدار</h2>
+        <p>
+            تهدف دار التلواني لتحفيظ القرآن الكريم ببرهيم إلى تعليم كتاب الله تعالى لجميع الأعمار، وتعليم أحكام التجويد نظريًا وعمليًا، وغرس الأخلاق الإسلامية، وإعداد جيلٍ مرتبط بالقرآن الكريم
+        </p>
+        </section>
+        <hr>
+        <section>
+        <h2>🌿 خدمات الدار </h2>
+        <ul>
+            <li>تحفيظ القرآن الكريم</li>
+            <li>تعليم أحكام التجويد </li>
+            <li>حلقات حضورية </li>
+            <li>دورات أونلاين</li>
+            <li>مسابقات قرآنية</li>
+        </ul>
+        </section>
+        <hr>
+        <section>
+        <h2>📢 آخر الأخبار</h2>
+        <ul>
+            <li>دورة تثبيت سورة آل عمران أونلاين</li>
+            <li> فتح دورة تجويد للمبتدئين</li>
+            <li> موعد الاختبار الشهرى يوم الجمعة</li>
+        </ul>
+        </section>
+        <hr>
+        <section>
+        <h2>📖 آية اليوم </h2>
+          <p id="ayah"> </p>
+        </section>
+        <hr>
+        <section >
+        <h2> 🌸 حديث اليوم</h2>
+         <p id="hadith"></p>
+    </section>
+    </main>
+    <hr>
+    <footer>
+    <p>
+        رقم هاتف الشيخ : 01000276014
+    </p>
+    <p>
+   <a href="https://www.facebook.com/telwanibarhim" target="_blank">صفحة الفيسبوك</a>
+   </p>
+   <p>
+   <a href=https://www.youtube.com/@daraltalwanibibarhim" target="_blank">قناة اليوتيوب</a>
+   </p>
+   <p>
+   العنوان : برهيم-منوف-محافظة المنوفية
+   </p>
+   <p>
+  &copy; جميع حقوق النشر محفوظة لدار التلوانى لتحفيظ القرآن الكريم
+   </p>
+</footer>
+ <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

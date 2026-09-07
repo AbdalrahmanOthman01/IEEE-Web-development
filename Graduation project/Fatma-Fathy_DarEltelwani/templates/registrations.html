@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>استمارات التسجيل</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="top-nav-container">
+
+        <a href="{{ url_for('admin') }}"
+           class="back-btn">
+            ⬅️ العودة للوحة التحكم
+        </a>
+
+    </div>
+
+    <main class="qa-container">
+
+        <h2>📋 استمارات التسجيل</h2>
+
+        <p>
+            جميع الطلبات التي تم إرسالها من صفحة التسجيل.
+        </p>
+
+        <hr>
+
+        <div id="registrationsContainer">
+            جاري تحميل الاستمارات...
+        </div>
+
+    </main>
+
+
+    <script>
+
+        const ADMIN_PASSWORD = "123";
+
+
+        function checkPassword() {
+
+            const userPass = prompt(
+                "برجاء إدخال كلمة سر الأدمن:"
+            );
+
+            if (userPass !== ADMIN_PASSWORD) {
+
+                alert("كلمة السر خاطئة!");
+
+                window.location.href =
+                    "{{ url_for('home') }}";
+
+                return false;
+            }
+
+            return true;
+        }
+
+
+        function loadRegistrations() {
+
+            const container =
+                document.getElementById(
+                    "registrationsContainer"
+                );
+
+            container.innerHTML =
+                "جاري تحميل الاستمارات...";
+
+
+            fetch("/api/admin/registrations")
+
+                .then(function(response) {
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "HTTP Error " +
+                            response.status
+                        );
+
+                    }
+
+                    return response.json();
+
+                })
+
+                .then(function(data) {
+
+                    container.innerHTML = "";
+
+
+                    if (!data || data.length === 0) {
+
+                        container.innerHTML = `
+
+                            <p style="
+                                text-align:center;
+                                color:#777;
+                                font-weight:bold;
+                            ">
+
+                                لا توجد استمارات حتى الآن.
+
+                            </p>
+
+                        `;
+
+                        return;
+                    }
+
+
+                    data.forEach(function(registration) {
+
+                        const card =
+                            document.createElement("div");
+
+                        card.className =
+                            "admin-card";
+
+
+                        card.innerHTML = `
+
+                            <h3>
+                                👤 ${registration.fullName}
+                            </h3>
+
+                            <p>
+                                <strong>رقم التسجيل:</strong>
+                                ${registration.id}
+                            </p>
+
+                            <p>
+                                <strong>العمر:</strong>
+                                ${registration.age || "-"}
+                            </p>
+
+                            <p>
+                                <strong>النوع:</strong>
+                                ${registration.gender || "-"}
+                            </p>
+
+                            <p>
+                                <strong>الهاتف:</strong>
+                                ${registration.phone || "-"}
+                            </p>
+
+                            <p>
+                                <strong>البريد الإلكتروني:</strong>
+                                ${registration.email || "-"}
+                            </p>
+
+                            <p>
+                                <strong>الكورس:</strong>
+                                ${registration.course || "-"}
+                            </p>
+
+                            <p>
+                                <strong>طريقة الدراسة:</strong>
+                                ${registration.way || "-"}
+                            </p>
+
+                            <p>
+                                <strong>الحلقة:</strong>
+                                ${registration.halaqa || "-"}
+                            </p>
+
+                            <p>
+                                <strong>المستوى:</strong>
+                                ${registration.level || "-"}
+                            </p>
+
+                            <p>
+                                <strong>الأيام:</strong>
+                                ${registration.day || "-"}
+                            </p>
+
+                            <p>
+                                <strong>ملاحظات:</strong>
+                                ${registration.notes || "-"}
+                            </p>
+
+                            <hr>
+
+                            <small>
+                                تاريخ التسجيل:
+                                ${registration.created_at || "-"}
+                            </small>
+
+                        `;
+
+
+                        container.appendChild(card);
+
+                    });
+
+                })
+
+                .catch(function(error) {
+
+                    console.error(error);
+
+                    container.innerHTML = `
+
+                        <p style="
+                            color:red;
+                            text-align:center;
+                        ">
+
+                            ❌ حدث خطأ أثناء تحميل الاستمارات.
+
+                            <br>
+
+                            تأكدي أن Flask و MySQL يعملان.
+
+                        </p>
+
+                    `;
+
+                });
+
+        }
+
+
+        if (checkPassword()) {
+
+            loadRegistrations();
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+
