@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat | SkillSwap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="brand"><span class="brand-mark">⇄</span><span>Skill</span><b>Swap</b></a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            {% if current_user %}
+                <a href="/explore">Explore</a>
+                <a href="/matches">Matches</a>
+                <a href="/requests">Requests</a>
+                <a href="/chat">Chat</a>
+                <a href="/profile">Profile</a>
+                <a class="nav-logout" href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+                <a class="nav-cta" href="/signup">Get Started</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-box">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}"><span>{{ message }}</span><button onclick="this.parentElement.remove()">×</button></div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+<!-- ==================== Chat Page ==================== -->
+<section class="chat-page">
+    <div class="chat-shell">
+        <!-- Chat partners list -->
+        <aside class="chat-list"><div class="chat-title"><h2>Messages</h2><span class="chat-count">{{ partners|length }}</span></div>
+            {% for person in partners %}<a class="chat-person {% if selected and selected.id == person.id %}selected{% endif %}" href="/chat/{{ person.id }}"><div class="avatar">{{ person.avatar or person.name[0] }}</div><div><strong>{{ person.name }}</strong><small>{{ person.teach }}</small></div></a>{% else %}<div class="chat-empty">Your accepted SkillSwap partners will appear here.</div>{% endfor %}
+        </aside>
+        <!-- Conversation -->
+        <section class="conversation">
+            {% if selected %}
+                <header class="conversation-head"><div class="avatar">{{ selected.avatar or selected.name[0] }}</div><div><h3>{{ selected.name }}</h3><span>SkillSwap Partner · {{ selected.governorate or 'Community' }}</span></div></header>
+                <div class="messages">{% for message in messages %}<div class="bubble-row {% if message.sender_id == current_user.id %}mine{% endif %}"><div class="bubble">{{ message.message }}</div></div>{% endfor %}</div>
+                <form class="message-form" method="POST" action="/chat/{{ selected.id }}/send"><input name="message" placeholder="Write a message..." autocomplete="off" required><button type="submit">➤</button></form>
+            {% else %}<div class="conversation-empty"><div>💬</div><h2>Your conversations</h2><p>Choose a SkillSwap partner to start chatting.</p></div>{% endif %}
+        </section>
+    </div>
+</section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-about">
+                <div class="footer-brand"><span class="brand-mark">⇄</span><span>Skill</span><b>Swap</b></div>
+                <p>Learn together. Share what you know. Build meaningful skill connections.</p>
+            </div>
+            <div class="footer-skill">
+                <span>Skill × Skill</span>
+                <p>Give a skill. Gain a skill.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 SkillSwap · All rights reserved.</span>
+            <span>Made for people who love learning.</span>
+        </div>
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

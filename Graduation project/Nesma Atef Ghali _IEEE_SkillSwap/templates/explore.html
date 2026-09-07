@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore | SkillSwap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="brand"><span class="brand-mark">⇄</span><span>Skill</span><b>Swap</b></a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            {% if current_user %}
+                <a href="/explore">Explore</a>
+                <a href="/matches">Matches</a>
+                <a href="/requests">Requests</a>
+                <a href="/chat">Chat</a>
+                <a href="/profile">Profile</a>
+                <a class="nav-logout" href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+                <a class="nav-cta" href="/signup">Get Started</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-box">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}"><span>{{ message }}</span><button onclick="this.parentElement.remove()">×</button></div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+<!-- ==================== Explore: Header & Search ==================== -->
+<section class="page-head explore-head">
+    <div>
+        <span class="eyebrow">DISCOVER</span>
+        <h1>Explore people & skills</h1>
+        <p>Find someone who teaches what you want to learn and wants to learn what you know.</p>
+    </div>
+    <form class="search-form" method="GET" action="/explore">
+        <input class="search-pill" type="search" name="q" value="{{ search }}" placeholder="Search name, skill, college or governorate..." aria-label="Search">
+        <input type="hidden" name="category" value="{{ category }}">
+        <button class="search-btn" type="submit">Search</button>
+    </form>
+</section>
+
+<!-- ==================== Explore: Category Filters ==================== -->
+<div class="filter-row">
+    {% for item in ["All", "Development", "Design", "Languages", "Business", "Marketing", "Data", "Other"] %}
+        <a class="filter {% if category == item %}active{% endif %}" href="/explore?category={{ item }}{% if search %}&q={{ search }}{% endif %}">{{ item }}</a>
+    {% endfor %}
+</div>
+
+<!-- ==================== Explore: People Cards ==================== -->
+<section class="people-grid">
+    {% for person in people %}
+        <article class="person-card">
+            <div class="person-top">
+                <div class="avatar">
+                    {% if person.avatar %}<img src="{{ person.avatar }}" alt="{{ person.name }} profile picture">{% else %}{{ person.name[0] }}{% endif %}
+                </div>
+                {% if person.available %}<span class="availability available">● Available</span>{% else %}<span class="availability unavailable">● Not Available</span>{% endif %}
+            </div>
+            <div class="person-center">
+                <h3>{{ person.name }}</h3>
+                <p class="role">{{ person.role or 'SkillSwap Member' }}</p>
+                <span class="match-label">{{ person.category }} · {{ person.governorate or 'Location not set' }}</span>
+            </div>
+            <div class="skill-box"><small>I CAN TEACH</small><strong>{{ person.teach or 'Skills not added yet' }}</strong></div>
+            <div class="skill-box want"><small>I WANT TO LEARN</small><strong>{{ person.learn or 'Goals not added yet' }}</strong></div>
+            <div class="person-meta"><span>🎓 {{ person.college or 'College not set' }}</span></div>
+            {% if not person.available %}
+                <button class="btn btn-disabled full" type="button" disabled>Not Available</button>
+            {% elif person.id < 0 %}
+                <button class="btn btn-outline full" type="button" onclick="showDemoMessage()">Send Swap Request</button>
+            {% elif request_map.get(person.id) == 'pending' %}
+                <button class="btn btn-disabled full" type="button" disabled>Request Sent ✓</button>
+            {% elif request_map.get(person.id) == 'received' %}
+                <a class="btn btn-outline full" href="/requests">Review Request</a>
+            {% elif request_map.get(person.id) == 'accepted' %}
+                <a class="btn btn-primary full" href="/chat/{{ person.id }}">Open Chat</a>
+            {% else %}
+                <form method="POST" action="/request/{{ person.id }}"><button class="btn btn-primary full" type="submit">Send Swap Request</button></form>
+            {% endif %}
+        </article>
+    {% else %}
+        <div class="empty-box grid-empty"><strong>No people found.</strong><br>Try another search or category.</div>
+    {% endfor %}
+</section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-about">
+                <div class="footer-brand"><span class="brand-mark">⇄</span><span>Skill</span><b>Swap</b></div>
+                <p>Learn together. Share what you know. Build meaningful skill connections.</p>
+            </div>
+            <div class="footer-skill">
+                <span>Skill × Skill</span>
+                <p>Give a skill. Gain a skill.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 SkillSwap · All rights reserved.</span>
+            <span>Made for people who love learning.</span>
+        </div>
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

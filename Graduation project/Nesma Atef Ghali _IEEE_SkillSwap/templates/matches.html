@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matches | SkillSwap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="brand"><span class="brand-mark">⇄</span><span>Skill</span><b>Swap</b></a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            {% if current_user %}
+                <a href="/explore">Explore</a>
+                <a href="/matches">Matches</a>
+                <a href="/requests">Requests</a>
+                <a href="/chat">Chat</a>
+                <a href="/profile">Profile</a>
+                <a class="nav-logout" href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+                <a class="nav-cta" href="/signup">Get Started</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-box">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}"><span>{{ message }}</span><button onclick="this.parentElement.remove()">×</button></div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+<section class="page-head simple-head">
+    <div>
+        <span class="eyebrow">SKILL MATCHES</span>
+        <h1>People who match your skills</h1>
+        <p>We compare what you can teach with what they want to learn, and what you want to learn with what they can teach.</p>
+    </div>
+</section>
+
+<!-- ==================== Matches: Filters ==================== -->
+<section class="match-filter-wrap">
+    <form class="match-filters" method="GET">
+        <select name="governorate" aria-label="Filter by governorate">
+            <option value="All">All Governorates</option>
+            {% for item in governorates %}
+                <option value="{{ item }}" {% if selected_governorate == item %}selected{% endif %}>{{ item }}</option>
+            {% endfor %}
+        </select>
+        <select name="gender" aria-label="Filter by gender">
+            <option value="All">Everyone</option>
+            <option value="Female" {% if selected_gender == "Female" %}selected{% endif %}>Female</option>
+            <option value="Male" {% if selected_gender == "Male" %}selected{% endif %}>Male</option>
+        </select>
+        <button class="btn btn-primary" type="submit">Filter Matches</button>
+        <a class="btn btn-ghost" href="/matches">Reset</a>
+    </form>
+</section>
+
+<!-- ==================== Matches: Skill Match Cards ==================== -->
+<section class="people-grid match-grid">
+    {% for person in people %}
+        <article class="person-card match-card">
+            <div class="match-badge">✓ SKILL MATCH</div>
+            <div class="person-top">
+                <div class="avatar">{% if person.avatar %}<img src="{{ person.avatar }}" alt="{{ person.name }} profile picture">{% else %}{{ person.name[0] }}{% endif %}</div>
+                {% if person.available %}<span class="online-dot">● Available</span>{% else %}<span class="offline-dot">● Not Available</span>{% endif %}
+            </div>
+            <div class="person-center">
+                <h3>{{ person.name }}</h3>
+                <p class="role">{{ person.role or person.category }} · {{ person.governorate or 'Location not set' }}</p>
+            </div>
+            <div class="skill-box"><small>THEY CAN TEACH YOU</small><strong>{{ person.teach or 'Skills not added yet' }}</strong></div>
+            <div class="skill-box want"><small>YOU CAN TEACH THEM</small><strong>{{ person.learn or 'Goals not added yet' }}</strong></div>
+            <div class="person-meta"><span>🎓 {{ person.college or 'College not set' }}</span>{% if person.gender %}<span> · {{ person.gender }}</span>{% endif %}</div>
+            {% if person.accepted %}
+                <a class="btn btn-primary full" href="/chat/{{ person.id }}">Open Chat ↗</a>
+            {% elif person.demo %}
+                <button class="btn btn-ghost full" type="button" onclick="showDemoMessage()">Send Swap Request</button>
+            {% elif person.request_status == 'pending' %}
+                <button class="btn btn-ghost full" type="button" disabled>Request Sent ✓</button>
+            {% elif person.request_status == 'received' %}
+                <a class="btn btn-primary full" href="/requests">Review Request</a>
+            {% elif person.available %}
+                <form method="POST" action="/request/{{ person.id }}"><button class="btn btn-primary full" type="submit">Send Swap Request</button></form>
+            {% else %}
+                <button class="btn btn-ghost full" type="button" disabled>Not Available</button>
+            {% endif %}
+        </article>
+    {% else %}
+        <div class="empty-profile grid-empty">
+            <div class="empty-icon">⇄</div>
+            <h2>No skill matches yet</h2>
+            <p>Complete your “I can teach” and “I want to learn” fields so SkillSwap can find a two-way skill exchange for you.</p>
+            <a class="btn btn-primary" href="/profile/edit">Update My Profile</a>
+        </div>
+    {% endfor %}
+</section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-about">
+                <div class="footer-brand"><span class="brand-mark">⇄</span><span>Skill</span><b>Swap</b></div>
+                <p>Learn together. Share what you know. Build meaningful skill connections.</p>
+            </div>
+            <div class="footer-skill">
+                <span>Skill × Skill</span>
+                <p>Give a skill. Gain a skill.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 SkillSwap · All rights reserved.</span>
+            <span>Made for people who love learning.</span>
+        </div>
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

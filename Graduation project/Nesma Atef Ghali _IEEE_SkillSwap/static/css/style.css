@@ -1,0 +1,1791 @@
+/*  General / Reset  */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: #f7f5ff;
+    color: #18152b;
+    font-family: "DM Sans", sans-serif;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 700;
+    font-size: 18px;
+}
+button,
+input,
+textarea,
+select { font-family: inherit; }
+
+/*  Shared Text  */
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    color: #8064e9;
+}
+
+.eyebrow.light { color: #b9aaff; }
+
+/* Navigation Bar */
+.navbar {
+    min-height: 78px;
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid #ece9f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(12px);
+}
+
+.brand {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 27px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.brand b { color: #8064e9; }
+
+.brand-mark {
+    display: inline-grid;
+    place-items: center;
+    background: #8064e9;
+    color: #fff;
+    width: 29px;
+    height: 29px;
+    border-radius: 9px;
+    font-size: 20px;
+    margin-right: 4px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    color: #615d72;
+}
+
+.nav-links a { font-size: 13px; transition: 0.2s ease; }
+
+.nav-links a:hover { color: #8064e9; }
+
+.nav-cta,
+.nav-logout {
+    padding: 10px 17px;
+    border-radius: 11px;
+}
+
+.nav-cta {
+    background: #8064e9;
+    color: #fff !important;
+    box-shadow: 0 8px 20px #8064e92b;
+}
+
+.nav-cta:hover,
+.nav-logout:hover {
+    background: #6e52d6 !important;
+    color: #fff !important;
+}
+
+.nav-logout {
+    border: 1px solid #e2deef;
+    background: #8064e9;
+    color: #fff !important;
+}
+
+/* Shared Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    border: 0;
+    border-radius: 11px;
+    padding: 13px 20px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.25s ease;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary {
+    background: #8064e9;
+    color: #fff;
+    box-shadow: 0 8px 20px #8064e92b;
+}
+
+.btn-primary:hover { background: #6e52d6; }
+
+.btn-ghost {
+    background: #fff;
+    border: 1px solid #ded9eb;
+    color: #4f4a60;
+}
+
+.btn-ghost:hover { background: #f0ecff; }
+
+.btn-outline {
+    border: 1px solid #dcd7eb;
+    background: #fff;
+    color: #5c5472;
+}
+
+.btn-outline:hover { border-color: #8064e9; color: #8064e9; background: #f7f4ff; }
+
+.btn-disabled {
+    background: #ece9f4;
+    color: #888296;
+    cursor: not-allowed;
+}
+
+.btn-disabled:hover { transform: none; }
+
+.full { width: 100%; }
+
+/* ==================== Home Page: Hero ==================== */
+.hero {
+    min-height: 650px;
+    padding: 80px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    background: linear-gradient(135deg, #fbfaff 0%, #f0edff 100%);
+    overflow: hidden;
+}
+
+.hero-copy { position: relative; z-index: 2; }
+
+.hero h1 {
+    font: 700 clamp(45px, 6vw, 74px) / 0.98 "Space Grotesk", sans-serif;
+    margin: 16px 0 25px;
+    letter-spacing: -3px;
+}
+
+.hero h1 span { color: #8064e9; }
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #686378;
+    max-width: 580px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 13px;
+    margin: 30px 0;
+}
+
+.mini-stats { display: flex; gap: 35px; }
+
+.mini-stats strong {
+    display: block;
+    font: 700 21px "Space Grotesk", sans-serif;
+}
+
+.mini-stats small { color: #777286; }
+
+/* ==================== Home Page: Hero Visual ==================== */
+.hero-art {
+    height: 440px;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.orbit {
+    position: absolute;
+    border: 1px dashed #bfb5e8;
+    border-radius: 50%;
+}
+
+.orbit-one { width: 330px; height: 330px; }
+
+.orbit-two {
+    width: 450px;
+    height: 230px;
+    transform: rotate(25deg);
+}
+
+.swap-visual {
+    position: relative;
+    width: 390px;
+    z-index: 2;
+}
+
+.visual-card {
+    width: 275px;
+    background: #fff;
+    border: 1px solid #e4e0ef;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 18px 50px #4c3b8c16;
+    transition: 0.3s ease;
+}
+
+.visual-card:hover { transform: translateY(-7px); }
+
+.visual-card span {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #8064e9;
+    font-weight: 800;
+}
+
+.visual-card strong {
+    display: block;
+    font: 700 25px "Space Grotesk", sans-serif;
+    margin: 9px 0;
+}
+
+.visual-card small { color: #777286; }
+
+.card-a { margin-left: 0; }
+
+.card-b { margin: 18px 0 0 auto; }
+
+.swap-arrow {
+    position: absolute;
+    left: 162px;
+    top: 145px;
+    background: #8064e9;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 27px;
+    box-shadow: 0 10px 30px #8064e94d;
+    z-index: 4;
+}
+
+.floating-tag {
+    position: absolute;
+    background: #fff;
+    padding: 11px 16px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px #30245b15;
+    font-size: 12px;
+    font-weight: 700;
+    z-index: 3;
+}
+
+.tag-one { top: 35px; right: 25px; }
+.tag-two { bottom: 30px; left: 5px; }
+
+/* ==================== Home Page: How It Works ==================== */
+.section {
+    padding: 85px 8%;
+    background: #fff;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 650px;
+    margin: auto;
+}
+
+.section-heading h2,
+.feature-strip h2 {
+    font: 700 39px "Space Grotesk", sans-serif;
+    margin: 10px 0;
+}
+
+.section-heading p {
+    color: #777286;
+    line-height: 1.7;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 50px;
+}
+
+.step {
+    padding: 28px;
+    border: 1px solid #ece8f4;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 10px 30px #493a7710;
+    transition: 0.25s ease;
+}
+
+.step:hover {
+    transform: translateY(-7px) scale(1.02);
+    box-shadow: 0 18px 40px #493a7718;
+    border-color: #d8cff8;
+}
+
+.step-num { color: #8064e9; font-weight: 800; }
+
+.step-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: #f0ecff;
+    color: #8064e9;
+    margin: 20px 0 15px;
+    font-size: 20px;
+}
+
+.step h3 { font: 700 18px "Space Grotesk", sans-serif; }
+
+.step p { color: #777286; font-size: 14px; line-height: 1.7; }
+
+/* ==================== Home Page: Highlight Cards ==================== */
+.highlight-section {
+    padding: 75px 8%;
+    background: #f7f5ff;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.highlight-card {
+    min-height: 235px;
+    padding: 30px;
+    border-radius: 22px;
+    box-shadow: 0 16px 45px #40336d12;
+    transition: 0.28s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 24px 55px #40336d1f;
+}
+
+.highlight-card span {
+    font: 700 12px "Space Grotesk", sans-serif;
+    opacity: 0.75;
+}
+
+.highlight-card h3 {
+    font: 700 25px "Space Grotesk", sans-serif;
+    margin: 30px 0 10px;
+}
+
+.highlight-card p { line-height: 1.7; margin: 0 0 22px; }
+
+.highlight-card a { font-size: 13px; }
+
+.purple-card { background: #8064e9; color: #fff; }
+.purple-card a { color: #fff; }
+.white-card { background: #fff; border: 1px solid #e8e3f2; }
+.white-card a { color: #8064e9; }
+.soft-card { background: #eae5ff; color: #28233d; }
+.soft-card a { color: #684ed0; }
+
+/* Home Page: Why SkillSwap  */
+.feature-strip {
+    padding: 70px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    background: #7669b2;
+    color: #fff;
+}
+
+.feature-strip > div:first-child { max-width: 500px; }
+
+.feature-strip h2 { margin: 10px 0; }
+
+.feature-strip p { color: #c7c1d5; line-height: 1.7; }
+
+.feature-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 50px;
+    color: #d8d3e6;
+}
+
+/* ==================== Authentication Pages ==================== */
+.auth-page {
+    min-height: calc(100vh - 78px);
+    display: grid;
+    place-items: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #f7f5ff, #eeeaff);
+}
+
+.auth-card {
+    width: min(470px, 100%);
+    background: #fff;
+    padding: 45px;
+    border: 1px solid #e7e2f1;
+    border-radius: 22px;
+    box-shadow: 0 25px 70px #4a3b7b12;
+}
+
+.auth-card h1 {
+    font: 700 36px "Space Grotesk", sans-serif;
+    margin: 10px 0;
+}
+
+.auth-card > p { color: #777286; }
+
+.form {
+    display: grid;
+    gap: 17px;
+    margin-top: 25px;
+}
+
+.form label {
+    display: grid;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form input,
+.form textarea,
+.form select,
+.search-pill {
+    font: inherit;
+    border: 1px solid #ddd8e9;
+    border-radius: 11px;
+    padding: 13px 14px;
+    outline: none;
+    background: #fff;
+}
+
+.form input:focus,
+.form textarea:focus,
+.form select:focus,
+.search-pill:focus {
+    border-color: #8064e9;
+    box-shadow: 0 0 0 3px #8064e914;
+}
+
+.form textarea { min-height: 125px; resize: vertical; }
+
+.form-foot { text-align: center !important; font-size: 13px; margin-top: 20px; }
+
+.form-foot a { color: #8064e9; font-weight: 700; }
+
+/* ==================== Explore / Matches: Page Header ==================== */
+.page-head {
+    padding: 65px 8% 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 30px;
+}
+
+.page-head h1 {
+    font: 700 45px "Space Grotesk", sans-serif;
+    margin: 9px 0;
+}
+
+.page-head p { color: #777286; max-width: 650px; line-height: 1.7; }
+
+.simple-head { padding-bottom: 15px; }
+
+/* ==================== Explore: Search ==================== */
+.search-form {
+    display: flex;
+    gap: 8px;
+    min-width: 350px;
+}
+
+.search-pill { color: #555064; width: 245px; }
+
+.search-btn {
+    border: 0;
+    border-radius: 11px;
+    background: #201c32;
+    color: #fff;
+    padding: 0 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.search-btn:hover { background: #8064e9; transform: translateY(-2px); }
+
+/* ==================== Explore: Category Filters ==================== */
+.filter-row {
+    display: flex;
+    gap: 9px;
+    padding: 0 8% 30px;
+    overflow: auto;
+}
+
+.filter {
+    padding: 9px 15px;
+    border: 1px solid #dfdae9;
+    border-radius: 30px;
+    font-size: 12px;
+    background: #fff;
+    white-space: nowrap;
+    transition: 0.2s ease;
+}
+
+.filter:hover { border-color: #8064e9; color: #8064e9; }
+
+.filter.active {
+    background: #8064e9;
+    color: #fff;
+    border-color: #8064e9;
+}
+
+/* ==================== Explore / Matches: People Cards ==================== */
+.people-grid {
+    padding: 15px 8% 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.person-card {
+    background: #fff;
+    border: 1px solid #e6e1ef;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 10px 35px #4d3d7c09;
+    transition: 0.28s ease;
+}
+
+.person-card:hover {
+    transform: translateY(-8px) scale(1.015);
+    box-shadow: 0 22px 50px #4d3d7c1a;
+    border-color: #d8cff8;
+}
+
+.person-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    background: #eeeaff;
+    color: #8064e9;
+    display: grid;
+    place-items: center;
+    font: 700 18px "Space Grotesk", sans-serif;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.avatar img,
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.online-dot {
+    font-size: 10px;
+    color: #49a57b;
+    background: #ecf8f1;
+    padding: 6px 9px;
+    border-radius: 20px;
+}
+
+.person-center { text-align: center; margin: 17px 0; }
+
+.person-card h3 {
+    font: 700 21px "Space Grotesk", sans-serif;
+    margin: 0 0 5px;
+}
+
+.role { color: #777286; font-size: 13px; margin: 0 0 10px; }
+
+.match-label {
+    font-size: 9px;
+    color: #8064e9;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+}
+
+.skill-box {
+    background: #f4f1ff;
+    border-radius: 12px;
+    padding: 13px;
+    margin-top: 9px;
+}
+
+.skill-box.want { background: #f5f5f8; }
+
+.skill-box small {
+    display: block;
+    color: #8064e9;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.skill-box strong { font-size: 13px; }
+
+.person-meta {
+    margin: 12px 0 0;
+    color: #8b8597;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.person-card .btn { margin-top: 17px; }
+
+.grid-empty { grid-column: 1 / -1; }
+
+/* ==================== Matches: Filters ==================== */
+.match-filter-wrap { padding: 0 8% 20px; }
+
+.match-filters {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #fff;
+    border: 1px solid #e7e2f1;
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 10px 30px #493a7710;
+}
+
+.match-filters .search-pill { flex: 1; min-width: 200px; }
+
+.match-filters select {
+    border: 1px solid #ddd8e9;
+    border-radius: 11px;
+    padding: 12px;
+    color: #5d576c;
+    background: #fff;
+    outline: none;
+}
+
+.match-filters select:focus { border-color: #8064e9; }
+
+/* ==================== Matches: Partner Badge ==================== */
+.match-card { position: relative; }
+
+.match-badge {
+    display: inline-block;
+    background: #eeeaff;
+    color: #8064e9;
+    padding: 6px 9px;
+    border-radius: 20px;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    margin-bottom: 15px;
+}
+
+/* ==================== Profile Page ==================== */
+.profile-wrap,
+.edit-page {
+    max-width: 950px;
+    margin: auto;
+    padding: 70px 20px 100px;
+}
+
+.profile-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profile-ready { font-size: 11px; color: #49a57b; font-weight: 700; }
+
+.profile-card {
+    background: #fff;
+    border: 1px solid #e5e0ef;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 18px 60px #493a7712;
+}
+
+.profile-cover {
+    height: 155px;
+    background: linear-gradient(120deg, #8064e9, #b4a1ff 60%, #ded6ff);
+    position: relative;
+}
+
+.profile-avatar.large {
+    width: 105px;
+    height: 105px;
+    border-radius: 30px;
+    background: #fff;
+    color: #8064e9;
+    font: 700 38px "Space Grotesk", sans-serif;
+    border: 6px solid #fff;
+    box-shadow: 0 10px 30px #241a4a22;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.profile-cover .profile-avatar {
+    position: absolute;
+    left: 50%;
+    bottom: -52px;
+    transform: translateX(-50%);
+}
+
+.profile-main {
+    padding: 70px 40px 25px;
+    text-align: center;
+}
+
+.profile-main h1 {
+    font: 700 34px "Space Grotesk", sans-serif;
+    margin: 0;
+}
+
+.email { color: #918b9f; font-size: 13px; }
+
+.bio {
+    color: #666173;
+    line-height: 1.7;
+    max-width: 650px;
+    margin: 16px auto;
+}
+
+.profile-location {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+.profile-location span {
+    background: #f7f5ff;
+    color: #6d667b;
+    border-radius: 30px;
+    padding: 8px 12px;
+    font-size: 10px;
+}
+
+.profile-skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 0 40px 25px;
+}
+
+.profile-skills div {
+    background: #f7f5ff;
+    padding: 19px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid #ece8f5;
+}
+
+.profile-skills span {
+    display: block;
+    color: #8064e9;
+    font-size: 9px;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
+.profile-skills strong { display: block; margin-top: 7px; font-size: 14px; }
+
+/* Edit button: centered below the profile content */
+.profile-action {
+    text-align: center;
+    padding: 0 40px 35px;
+}
+
+.profile-action .btn { min-width: 180px; }
+
+.empty-profile {
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e5e0ef;
+    border-radius: 22px;
+    padding: 80px 30px;
+    box-shadow: 0 18px 50px #493a7710;
+}
+
+.empty-icon { font-size: 35px; color: #8064e9; margin-bottom: 20px; }
+
+.empty-profile h1,
+.edit-intro h1 {
+    font: 700 40px "Space Grotesk", sans-serif;
+    margin: 10px 0;
+}
+
+.empty-profile p {
+    color: #777286;
+    max-width: 520px;
+    margin: 0 auto 25px;
+    line-height: 1.7;
+}
+
+/* ==================== Edit Profile Page ==================== */
+.edit-intro { text-align: center; margin-bottom: 35px; }
+.edit-intro p { color: #777286; }
+
+.edit-card {
+    background: #fff;
+    border: 1px solid #e5e0ef;
+    border-radius: 22px;
+    padding: 35px;
+    box-shadow: 0 18px 55px #493a7710;
+}
+
+.edit-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 40px;
+}
+
+.avatar-upload {
+    text-align: center;
+    padding: 25px;
+    background: #f7f5ff;
+    border-radius: 17px;
+}
+
+.avatar-upload .profile-avatar { margin: 0 auto 15px; }
+.avatar-upload p { font-weight: 700; margin: 5px; }
+.avatar-upload small { display: block; color: #918b9f; font-size: 11px; line-height: 1.5; margin-bottom: 15px; }
+
+.avatar-upload input {
+    width: 100%;
+    border: 1px solid #ddd8e9;
+    border-radius: 9px;
+    padding: 10px;
+    font-size: 11px;
+}
+
+.form-profile { margin: 0; }
+
+.two-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid #eeeaf5;
+    margin-top: 30px;
+    padding-top: 25px;
+}
+
+/* ==================== Requests Page ==================== */
+.request-layout {
+    padding: 15px 8% 80px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 25px;
+}
+
+.subhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0 15px;
+}
+
+.subhead h2 { font: 700 20px "Space Grotesk", sans-serif; margin: 0; }
+.subhead span { font-size: 11px; color: #938da2; }
+
+.request-card {
+    background: #fff;
+    border: 1px solid #e5e0ef;
+    border-radius: 16px;
+    padding: 17px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 11px;
+    box-shadow: 0 8px 25px #493a7710;
+}
+
+.request-info { flex: 1; }
+.request-info h3 { margin: 0; font: 700 16px "Space Grotesk", sans-serif; }
+.request-info p { margin: 4px 0 10px; color: #777286; font-size: 12px; }
+.request-info div { display: flex; gap: 12px; font-size: 10px; color: #918b9f; flex-wrap: wrap; }
+.request-actions { display: flex; gap: 6px; }
+.request-actions .btn { padding: 9px 12px; font-size: 11px; }
+
+.status {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 7px 10px;
+    border-radius: 20px;
+    background: #f0eef5;
+}
+
+.status.accepted { color: #32845f; background: #eaf8f0; }
+.status.rejected { color: #aa5260; background: #fff0f2; }
+.status.pending { color: #8064e9; background: #eeeaff; }
+
+.empty-box {
+    background: #fff;
+    border: 1px dashed #d9d3e6;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    color: #8b8597;
+    font-size: 13px;
+}
+
+/* ==================== Chat Page ==================== */
+.chat-page { padding: 45px 8% 80px; }
+
+.chat-shell {
+    height: 650px;
+    background: #fff;
+    border: 1px solid #e3deec;
+    border-radius: 22px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    overflow: hidden;
+    box-shadow: 0 20px 60px #493a7710;
+}
+
+.chat-list { border-right: 1px solid #ece8f3; padding: 22px; }
+
+.chat-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chat-title h2 { font: 700 25px "Space Grotesk", sans-serif; margin: 5px 0; }
+.chat-count { background: #eeeaff; color: #8064e9; padding: 5px 9px; border-radius: 20px; font-size: 11px; }
+
+.chat-person {
+    display: flex;
+    gap: 11px;
+    padding: 11px;
+    border-radius: 12px;
+    margin-bottom: 5px;
+}
+
+.chat-person.selected,
+.chat-person:hover { background: #f3f0ff; }
+
+.chat-person strong { display: block; font-size: 13px; }
+.chat-person small { color: #918b9f; font-size: 10px; }
+.chat-empty { color: #9993a4; font-size: 12px; line-height: 1.6; padding: 20px 5px; }
+
+.conversation { display: flex; flex-direction: column; background: #faf9fd; }
+
+.conversation-head {
+    padding: 18px 25px;
+    background: #fff;
+    border-bottom: 1px solid #ece8f3;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.conversation-head h3 { margin: 0; font: 700 17px "Space Grotesk", sans-serif; }
+.conversation-head span { font-size: 10px; color: #918b9f; }
+
+.messages { flex: 1; padding: 25px; overflow: auto; }
+.bubble-row { display: flex; margin: 8px 0; }
+.bubble-row.mine { justify-content: flex-end; }
+
+.bubble {
+    max-width: 65%;
+    background: #eeeaf9;
+    padding: 11px 15px;
+    border-radius: 15px 15px 15px 4px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.mine .bubble { background: #8064e9; color: #fff; border-radius: 15px 15px 4px 15px; }
+
+.conversation-empty { margin: auto; text-align: center; color: #918b9f; }
+.conversation-empty div { font-size: 38px; }
+.conversation-empty h2 { color: #29243c; font-family: "Space Grotesk", sans-serif; }
+
+.message-form {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: #fff;
+    border-top: 1px solid #ece8f3;
+}
+
+.message-form input {
+    flex: 1;
+    border: 1px solid #ddd8e9;
+    border-radius: 12px;
+    padding: 13px;
+    outline: none;
+}
+
+.message-form input:focus { border-color: #8064e9; }
+
+.message-form button {
+    width: 45px;
+    border: 0;
+    border-radius: 12px;
+    background: #8064e9;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.message-form button:hover { background: #6e52d6; }
+
+/* ==================== Footer ==================== */
+.site-footer {
+    background: #201c32;
+    color: #c7c1d5;
+    padding: 48px 8% 20px;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+    padding-bottom: 35px;
+    border-bottom: 1px solid #3b354e;
+}
+
+.footer-brand {
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    font: 700 22px "Space Grotesk", sans-serif;
+}
+
+.footer-brand b { color: #a894ff; }
+
+.footer-about p {
+    max-width: 340px;
+    color: #9e97ad;
+    line-height: 1.7;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+}
+
+.footer-links a {
+    color: #c7c1d5;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.footer-links a:hover { color: #a894ff; }
+
+.footer-note { text-align: right; }
+
+.footer-pill {
+    display: inline-block;
+    background: #302a43;
+    color: #b9aaff;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.footer-note p { color: #9e97ad; font-size: 12px; }
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 20px;
+    color: #817a91;
+    font-size: 10px;
+}
+
+/* ==================== Flash Messages ==================== */
+.flash-box {
+    position: fixed;
+    top: 90px;
+    right: 25px;
+    z-index: 20;
+}
+
+.flash {
+    background: #fff;
+    border: 1px solid #ddd8e9;
+    padding: 13px 15px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px #31255320;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    min-width: 270px;
+    font-size: 13px;
+    transition: opacity 0.3s ease;
+}
+
+.flash.success { border-left: 4px solid #49a57b; }
+.flash.error { border-left: 4px solid #c75d6e; }
+.flash button { border: 0; background: none; cursor: pointer; font-size: 18px; }
+
+/* ==================== Responsive: Tablet ==================== */
+@media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 55px; }
+    .hero-art { display: none; }
+    .steps,
+    .people-grid,
+    .highlight-section { grid-template-columns: 1fr 1fr; }
+    .request-layout { grid-template-columns: 1fr; }
+    .edit-grid { grid-template-columns: 1fr; }
+    .chat-shell { grid-template-columns: 210px 1fr; }
+    .feature-strip { align-items: flex-start; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .footer-note { text-align: left; }
+}
+
+/* ==================== Responsive: Mobile ==================== */
+@media (max-width: 620px) {
+    .navbar {
+        padding: 10px 4%;
+        min-height: 70px;
+        align-items: flex-start;
+    }
+
+    .brand { font-size: 22px; }
+    .nav-links { gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a { font-size: 10px; }
+    .nav-links a:nth-child(n + 4) { display: none; }
+
+    .hero { padding: 55px 6%; }
+    .hero h1 { letter-spacing: -2px; }
+    .hero-actions { flex-direction: column; }
+    .mini-stats { gap: 20px; flex-wrap: wrap; }
+
+    .steps,
+    .people-grid,
+    .highlight-section { grid-template-columns: 1fr; }
+
+    .section { padding: 65px 6%; }
+    .section-heading h2 { font-size: 31px; }
+    .feature-strip { display: block; padding: 55px 6%; }
+    .feature-list { grid-template-columns: 1fr; margin-top: 30px; }
+
+    .auth-card { padding: 30px 22px; }
+
+    .page-head {
+        padding: 45px 6% 20px;
+        display: block;
+    }
+
+    .page-head h1 { font-size: 36px; }
+
+    .search-form {
+        min-width: 0;
+        margin-top: 20px;
+    }
+
+    .search-pill { width: 100%; }
+    .search-btn { padding: 0 15px; }
+    .filter-row { padding-left: 6%; padding-right: 6%; }
+    .people-grid { padding-left: 6%; padding-right: 6%; }
+    .request-layout { padding-left: 6%; padding-right: 6%; }
+
+    .match-filter-wrap { padding: 0 6% 20px; }
+    .match-filters { align-items: stretch; }
+    .match-filters .search-pill { min-width: 100%; }
+    .match-filters select { flex: 1; min-width: 45%; }
+    .match-filters .btn { width: 100%; }
+
+    .profile-wrap,
+    .edit-page { padding: 50px 15px 75px; }
+    .profile-main { padding: 70px 22px 20px; }
+    .profile-main h1 { font-size: 29px; }
+    .profile-skills { padding: 0 22px 20px; grid-template-columns: 1fr; }
+    .profile-action { padding: 0 22px 30px; }
+    .profile-action .btn { width: 100%; }
+    .profile-location { flex-direction: column; align-items: center; }
+
+    .edit-card { padding: 20px; }
+    .two-fields { grid-template-columns: 1fr; }
+    .edit-actions { justify-content: stretch; }
+    .edit-actions .btn { flex: 1; }
+
+    .request-card { align-items: flex-start; flex-wrap: wrap; }
+    .request-info { min-width: calc(100% - 70px); }
+    .request-actions { width: 100%; }
+    .request-actions .btn { flex: 1; }
+
+    .chat-page { padding: 20px 4%; }
+    .chat-shell { height: 650px; grid-template-columns: 1fr; }
+    .chat-list { display: none; }
+
+    .site-footer { padding: 40px 6% 20px; }
+    .footer-top { grid-template-columns: 1fr; gap: 30px; }
+    .footer-note { text-align: left; }
+    .footer-bottom { display: block; }
+    .footer-bottom span { display: block; margin-top: 8px; }
+
+    .flash-box { left: 15px; right: 15px; }
+    .flash { min-width: 0; }
+}
+
+/* ==================== Final Polish: Explore ==================== */
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.filter {
+    white-space: nowrap;
+}
+
+.person-card .avatar {
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.person-card .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.person-top {
+    align-items: center;
+}
+
+.availability {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.availability.available {
+    color: #2f9e68;
+}
+
+.availability.unavailable {
+    color: #9b94a7;
+}
+
+/* ==================== Final Polish: Matches ==================== */
+.match-filter-wrap {
+    display: none;
+}
+
+.match-badge {
+    margin-bottom: 12px;
+}
+
+.match-card .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ==================== Final Polish: Profile ==================== */
+.profile-card {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.profile-cover {
+    padding: 26px 20px 0;
+}
+
+.profile-avatar.large {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-avatar.large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-main {
+    padding: 18px 34px 8px;
+}
+
+.profile-skills {
+    padding: 18px 34px;
+}
+
+.profile-action {
+    padding: 0 34px 28px;
+}
+
+.profile-edit-btn {
+    min-width: 170px;
+}
+
+/* ==================== Final Polish: Edit Profile Image ==================== */
+.avatar-upload .profile-avatar.large {
+    width: 118px;
+    height: 118px;
+}
+
+.avatar-upload input[type="file"] {
+    max-width: 100%;
+    padding: 10px;
+}
+
+/* ==================== Final Polish: Small Footer ==================== */
+.site-footer {
+    padding: 20px 6%;
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0;
+    color: #9e97ad;
+    font-size: 12px;
+}
+
+/* ==================== Final Polish: Home Why Section ==================== */
+.feature-strip {
+    margin-bottom: 70px;
+}
+
+@media (max-width: 700px) {
+    .filter-row {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 6px;
+    }
+
+    .profile-card {
+        max-width: 94%;
+    }
+
+    .profile-main,
+    .profile-skills,
+    .profile-action {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* ==================== Final Version: Home Why Section ==================== */
+.feature-strip {
+    margin: 0 8% 70px;
+    padding: 55px 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    background: #f7f5ff;
+    color: #201c32;
+    border: 1px solid #e8e2f6;
+    border-radius: 24px;
+}
+
+.feature-strip > div:first-child {
+    max-width: 560px;
+}
+
+.feature-strip .eyebrow.light {
+    color: #8064e9;
+}
+
+.feature-strip h2 {
+    margin: 10px 0;
+    font: 700 34px "Space Grotesk", sans-serif;
+}
+
+.feature-strip p {
+    color: #777286;
+    line-height: 1.7;
+}
+
+.feature-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 35px;
+    color: #5f586e;
+    font-size: 13px;
+    min-width: 370px;
+}
+
+/* ==================== Final Version: Matches Filters ==================== */
+.match-filter-wrap {
+    display: block;
+    padding: 0 8% 25px;
+}
+
+.match-filters {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #fff;
+    border: 1px solid #e7e2f1;
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow: 0 10px 30px #493a7710;
+}
+
+.match-filters select {
+    min-width: 190px;
+    border: 1px solid #ddd8e9;
+    border-radius: 11px;
+    padding: 12px 14px;
+    color: #5d576c;
+    background: #fff;
+    outline: none;
+}
+
+.match-filters select:focus {
+    border-color: #8064e9;
+}
+
+.match-filters .btn {
+    margin-top: 0;
+}
+
+/* ==================== Final Version: Explore Cards ==================== */
+.person-card .avatar {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    margin: 0 auto;
+    font-size: 25px;
+}
+
+.person-top {
+    display: block;
+    text-align: center;
+}
+
+.person-top .online-dot,
+.person-top .offline-dot {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.offline-dot {
+    font-size: 10px;
+    color: #8b8597;
+    background: #f2f1f4;
+    padding: 6px 9px;
+    border-radius: 20px;
+}
+
+/* ==================== Final Version: Smaller Profile ==================== */
+.profile-card {
+    max-width: 610px;
+}
+
+.profile-cover {
+    height: 115px;
+}
+
+.profile-avatar.large {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-width: 5px;
+    font-size: 32px;
+}
+
+.profile-cover .profile-avatar {
+    bottom: -45px;
+}
+
+.profile-main {
+    padding: 58px 28px 8px;
+}
+
+.profile-main h1 {
+    font-size: 29px;
+}
+
+.profile-skills {
+    padding: 16px 28px 20px;
+}
+
+.profile-skills div {
+    padding: 15px;
+}
+
+.profile-action {
+    padding: 0 28px 25px;
+}
+
+.profile-edit-btn {
+    min-width: 160px;
+}
+
+/* ==================== Final Version: Small Footer ==================== */
+.site-footer {
+    background: #201c32;
+    padding: 18px 6%;
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0;
+    color: #aaa4b7;
+    font-size: 11px;
+}
+
+/* ==================== Final Version: Gender Field ==================== */
+.avatar-upload .profile-avatar.large {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+@media (max-width: 700px) {
+    .feature-strip {
+        margin: 0 6% 55px;
+        padding: 35px 25px;
+        display: block;
+    }
+
+    .feature-list {
+        grid-template-columns: 1fr;
+        min-width: 0;
+        margin-top: 25px;
+    }
+
+    .match-filter-wrap {
+        padding: 0 6% 20px;
+    }
+
+    .match-filters select,
+    .match-filters .btn {
+        width: 100%;
+    }
+
+    .profile-card {
+        max-width: 92%;
+    }
+
+    .profile-main {
+        padding: 58px 20px 8px;
+    }
+
+    .profile-skills {
+        padding: 16px 20px 20px;
+    }
+
+    .profile-action {
+        padding: 0 20px 24px;
+    }
+}
+
+
+/* ==================== Final Update: Simple Hero Illustration ==================== */
+.hero-art {
+    height: auto;
+    min-height: 430px;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+.hero-image {
+    width: min(560px, 100%);
+    height: auto;
+    display: block;
+}
+.hero-copy .eyebrow {
+    display: inline-block;
+}
+.hero h1 {
+    font-size: clamp(50px, 6vw, 78px);
+    line-height: .98;
+}
+.mini-stats {
+    gap: 42px;
+    margin-top: 8px;
+}
+.mini-stats > div {
+    min-width: 95px;
+}
+.mini-stats strong {
+    font-size: 24px;
+}
+
+/* ==================== Final Update: Why SkillSwap Section ==================== */
+.feature-strip {
+    margin: 100px;
+    padding: 75px 8%;
+    border: 1px solid ;
+    border-radius: 25px;
+    background: #776ca7;
+    color: #ffffff;
+}
+.feature-strip h2 {
+    font-size: 38px;
+    color: #ffffff;
+}
+.feature-strip p {
+    color: white;
+}
+.feature-list {
+    color: white;
+}
+
+/* ==================== Final Update: Real Footer ==================== */
+.site-footer {
+    background: #201c32;
+    color: #c7c1d5;
+    padding: 42px 8% 18px;
+}
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #3b354e;
+}
+.footer-about {
+    max-width: 480px;
+}
+.footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #fff;
+    font: 700 24px "Space Grotesk", sans-serif;
+}
+.footer-brand b { color: #a894ff; }
+.footer-about p {
+    margin: 14px 0 0;
+    max-width: 390px;
+    color: #9e97ad;
+    line-height: 1.7;
+    font-size: 13px;
+}
+.footer-skill {
+    text-align: right;
+    padding-top: 5px;
+}
+.footer-skill span {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 22px;
+    background: #302949;
+    color: #b9aaff;
+    font-size: 12px;
+    font-weight: 800;
+}
+.footer-skill p {
+    margin: 12px 0 0;
+    color: #9e97ad;
+    font-size: 12px;
+}
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 17px;
+    color: #777086;
+    font-size: 11px;
+}
+
+/* ==================== Final Update: Compact Edit Profile ==================== */
+.edit-profile-page {
+    width: min(780px, calc(100% - 30px));
+    margin: 0 auto;
+    padding: 55px 0 75px;
+}
+.edit-intro {
+    margin-bottom: 24px;
+}
+.edit-intro h1 {
+    font-size: 34px;
+}
+.form-profile {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #e5e0ef;
+    border-radius: 20px;
+    box-shadow: 0 15px 45px #493a7710;
+}
+.avatar-upload {
+    max-width: 360px;
+    margin: 0 auto 20px;
+    padding: 18px;
+}
+.avatar-upload small {
+    max-width: 270px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.profile-form-fields {
+    display: grid;
+    gap: 14px;
+}
+.form-profile .form-profile-fields label,
+.profile-form-fields label {
+    font-size: 12px;
+}
+.profile-form-fields input,
+.profile-form-fields textarea,
+.profile-form-fields select {
+    padding: 11px 12px;
+}
+.profile-form-fields textarea {
+    min-height: 95px;
+}
+.edit-actions {
+    margin-top: 22px;
+    padding-top: 18px;
+}
+.eyebrowlight{
+    color: rgb(209, 198, 116);
+    font-weight: 1000;
+    font-size: 18px;
+}
+
+@media (max-width: 700px) {
+    .hero-art { display: grid; min-height: 300px; }
+    .hero-image { width: min(460px, 100%); }
+    .mini-stats { gap: 20px; }
+    .feature-strip { padding: 55px 6%; }
+    .footer-main, .footer-bottom { display: block; }
+    .footer-skill { text-align: left; margin-top: 25px; }
+    .footer-bottom span { display: block; margin-top: 8px; }
+    .edit-profile-page { width: min(100% - 20px, 700px); padding-top: 40px; }
+    .form-profile { padding: 18px; }
+}

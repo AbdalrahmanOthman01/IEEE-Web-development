@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requests | SkillSwap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="brand"><span class="brand-mark">⇄</span><span>Skill</span><b>Swap</b></a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            {% if current_user %}
+                <a href="/explore">Explore</a>
+                <a href="/matches">Matches</a>
+                <a href="/requests">Requests</a>
+                <a href="/chat">Chat</a>
+                <a href="/profile">Profile</a>
+                <a class="nav-logout" href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+                <a class="nav-cta" href="/signup">Get Started</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-box">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}"><span>{{ message }}</span><button onclick="this.parentElement.remove()">×</button></div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+<!-- ==================== Requests Page ==================== -->
+<section class="page-head simple-head"><div><span class="eyebrow">YOUR ACTIVITY</span><h1>Swap requests</h1><p>Manage the people who want to exchange skills with you.</p></div></section>
+<section class="request-layout">
+    <div>
+        <div class="subhead"><h2>Received requests</h2><span>{{ received|length }} request(s)</span></div>
+        {% for item in received %}
+            <article class="request-card">
+                <div class="avatar">{{ item.avatar or item.name[0] }}</div><div class="request-info"><h3>{{ item.name }}</h3><p>{{ item.teach }} · wants {{ item.learn }}</p><div><span>📍 {{ item.governorate or 'Location not set' }}</span><span>🎓 {{ item.college or 'College not set' }}</span></div></div>
+                {% if item.status == 'pending' %}<div class="request-actions"><form method="POST" action="/request/{{ item.id }}/accept"><button class="btn btn-primary" type="submit">Accept</button></form><form method="POST" action="/request/{{ item.id }}/reject"><button class="btn btn-outline" type="submit">Reject</button></form></div>{% else %}<span class="status {{ item.status }}">{{ item.status|capitalize }}</span>{% endif %}
+            </article>
+        {% else %}<div class="empty-box">No received requests yet.</div>{% endfor %}
+    </div>
+    <div>
+        <div class="subhead"><h2>Sent requests</h2><span>{{ sent|length }} request(s)</span></div>
+        {% for item in sent %}
+            <article class="request-card"><div class="avatar">{{ item.avatar or item.name[0] }}</div><div class="request-info"><h3>{{ item.name }}</h3><p>{{ item.teach }} · wants {{ item.learn }}</p></div><span class="status {{ item.status }}">{{ item.status|capitalize }}</span></article>
+        {% else %}<div class="empty-box">You have not sent any requests yet.</div>{% endfor %}
+    </div>
+</section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-about">
+                <div class="footer-brand"><span class="brand-mark">⇄</span><span>Skill</span><b>Swap</b></div>
+                <p>Learn together. Share what you know. Build meaningful skill connections.</p>
+            </div>
+            <div class="footer-skill">
+                <span>Skill × Skill</span>
+                <p>Give a skill. Gain a skill.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 SkillSwap · All rights reserved.</span>
+            <span>Made for people who love learning.</span>
+        </div>
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
